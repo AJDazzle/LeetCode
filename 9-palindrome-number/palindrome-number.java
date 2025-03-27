@@ -1,17 +1,20 @@
-import java.util.*;
 class Solution {
     public boolean isPalindrome(int x) {
+        if (x < 0) return false; // Negative numbers can't be palindromes
         String a = Integer.toString(x);
-        Stack<Character> s=new Stack<>();
-        for(int i=0;i<a.length();i++)
-        {
-            s.push(a.charAt(i));
+        
+        int left = 0;
+        int right = a.length() - 1;
+        
+        // Compare characters from both ends
+        while (left < right) {
+            if (a.charAt(left) != a.charAt(right)) {
+                return false;
+            }
+            left++;
+            right--;
         }
-        String b="";
-        while(!s.isEmpty())
-        {
-            b += s.pop();
-        }
-       return a.equals(b);
+        
+        return true;
     }
 }
